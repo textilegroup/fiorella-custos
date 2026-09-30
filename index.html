@@ -474,6 +474,64 @@ table.cst.mrg td.gtag{width:1%}
 table.cst.mrg td.gtag .sv{font-style:italic}
 table.cst.mrg th.gtag{text-align:right}
 /* ---- guia Markup ---- */
+/* ---- guia Tabela de precos ---- */
+.pr-bar{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center;padding:10px 14px;
+  border-bottom:1px solid var(--line);background:var(--sunk)}
+.pr-seg{display:inline-flex;align-items:stretch;border:1px solid var(--line);border-radius:7px;
+  overflow:hidden;background:var(--card)}
+.pr-seg .lb{display:flex;align-items:center;padding:0 10px;border-right:1px solid var(--line);
+  font-size:9.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+.pr-seg button{font:inherit;font-size:12px;font-weight:700;padding:6px 13px;border:0;
+  background:transparent;color:var(--ink-2);cursor:pointer;white-space:nowrap}
+.pr-seg button + button{border-left:1px solid var(--line)}
+.pr-seg button:hover{background:var(--sunk);color:var(--ink)}
+.pr-seg button[aria-pressed="true"]{background:var(--wine);color:#fff}
+.pr-seg button .dot{display:inline-block;width:6px;height:6px;border-radius:50%;
+  background:var(--s2);margin-left:6px;vertical-align:1px}
+.pr-seg button[aria-pressed="true"] .dot{background:#fff}
+.pr-pis{display:flex;align-items:center;gap:7px;font-size:9.5px;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+.pr-pis input{width:74px;font:inherit;font-size:12px;text-align:right;padding:6px 8px;
+  border:1px solid var(--line);border-radius:7px;background:var(--card);color:var(--ink)}
+.pr-pis input:focus{outline:2px solid var(--cen);outline-offset:-1px}
+.pr-bar .oc{font:inherit;font-size:11px;font-weight:600;padding:6px 11px;margin-left:auto;
+  border:1px solid var(--line);border-radius:7px;background:var(--card);color:var(--ink-2);cursor:pointer}
+.pr-bar .oc[aria-pressed="true"]{background:var(--ink-2);color:var(--card);border-color:var(--ink-2)}
+.pr-bar .sim{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--s2);border:1px dashed var(--s2);border-radius:6px;padding:3px 8px}
+table.cst.pr-coef{border-bottom:2px solid var(--line)}
+table.cst.pr-coef th,table.cst.pr-coef td{text-align:right}
+table.cst.pr-coef th.rh,table.cst.pr-coef td.rh{text-align:left;width:190px}
+table.cst.pr-coef td.rh{padding:0 12px;font-size:10px;font-weight:700;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--ink-3);background:var(--sunk)}
+table.cst.pr-coef td.ro{padding:6px 9px;font-variant-numeric:tabular-nums;color:var(--ink-2)}
+table.cst.pr-coef tr.mkp td.ro{color:var(--cen);font-weight:700;font-size:13px}
+table.cst.pr-coef td.ro i{font-style:normal;font-size:10px;font-weight:700;color:var(--s1);
+  text-transform:uppercase;letter-spacing:.04em}
+table.cst.pr-coef input.num{text-align:right}
+table.cst.pr-tab th.pcol,table.cst.pr-tab td.pcol{text-align:right;width:108px}
+table.cst.pr-tab td{padding:6px 9px;font-variant-numeric:tabular-nums}
+table.cst.pr-tab td.vis{width:34px;padding:0;text-align:center}
+table.cst.pr-tab td.cod{font-weight:600;color:var(--ink);text-align:left;font-family:inherit}
+table.cst.pr-tab td.fnt{text-align:left;width:90px}
+table.cst.pr-tab th.num,table.cst.pr-tab td.cus{width:110px}
+table.cst.pr-tab td.fnt{font-size:9.5px;font-weight:700;letter-spacing:.04em;color:var(--ink-3)}
+table.cst.pr-tab td.cus{text-align:right;color:var(--ink-2)}
+table.cst.pr-tab td.pcol b{font-weight:700;color:var(--ink)}
+table.cst.pr-tab td.sc{text-align:center;font-size:9.5px;font-weight:700;letter-spacing:.06em;
+  color:var(--s1);font-style:normal}
+table.cst.pr-tab tr.pr-oc td{opacity:.48}
+table.cst.pr-tab tr.pr-oc td.vis{opacity:1}
+table.cst.pr-tab tbody tr:hover td{background:var(--sunk)}
+/* icone de tabela: liga/desliga o item na tabela de precos */
+.pv{display:inline-grid;place-items:center;flex:0 0 24px;width:24px;height:24px;margin-left:4px;
+  padding:0;border:1px solid transparent;border-radius:5px;background:transparent;
+  color:var(--s3);cursor:pointer}
+.pv svg{width:14px;height:14px;display:block}
+.pv:hover{border-color:var(--line);background:var(--card)}
+.pv.off{color:var(--ink-3);opacity:.55}
+.pv.off:hover{opacity:1}
+.pv[disabled]{cursor:progress;opacity:.4}
 table.cst.mk th.uf,table.cst.mk td.uf{width:74px}
 table.cst.mk th.pc,table.cst.mk td.pc{width:82px;text-align:right}
 table.cst.mk th.rm,table.cst.mk td.rm{width:34px;text-align:center}
@@ -1109,6 +1167,33 @@ const T = {
   saveOk:'HTML gerado com os dados atuais. Suba esse arquivo no lugar do index.html.',
   saveErr:'Só consigo gerar o HTML quando a página está publicada (GitHub Pages ou outro servidor) — abrindo o arquivo direto do disco o navegador bloqueia a leitura do próprio código.',
   pfilters:(f,d)=>'Filtros: '+f+'  ·  Gerado em '+d,
+  cstGuiaPrecos:'Tabela de preços',
+  prIcms:'ICMS', prBase:'Custo', prAtual:'Atual', prNova:'Nova · simulação',
+  prSimula:'simulando com o rascunho — nada publicado',
+  prPis:'PIS/COFINS %', prMargem:'Margem %', prComissao:'Comissão %', prMarkup:'Markup',
+  prVar:'Var. para a tabela seguinte',
+  prTab:i=> i===4 ? 'Gerência' : 'Tabela '+(i+1),
+  prCodigo:'Código', prFonte:'Fonte', prCusto:'Custo',
+  prSemCusto:'SEM CUSTO', prInviavel:'inviável',
+  prSub:(n,tt,i)=>n+' de '+tt+' itens na tabela · ICMS '+i+'%',
+  prCnt:(n,oc)=>n+' na tabela'+(oc ? ' · '+oc+(oc===1?' oculto':' ocultos') : ''),
+  prVerOc:n=>'Ver ocultos ('+n+')',
+  prVazio:'Nenhum item visível. O ícone de tabela ao lado de cada código (guia Custos e agrupamento) põe o item na tabela.',
+  prSemBase:'A base de custo da Lista de preços está vazia. Lance os itens na Lista de preços · Nova e clique em Aplicar na Lista de preços.',
+  prSalvo:l=>'Coeficientes salvos (ICMS '+l.join(', ')+'), valendo para todos.',
+  prNadaSalvar:'Nenhuma alteração nos coeficientes para salvar.',
+  prVisOn:'Aparece na tabela de preços — clique para ocultar',
+  prVisOff:'Oculto na tabela de preços — clique para mostrar',
+  prVisOk:(k,v)=>'"'+k+'"'+(v ? ' volta a aparecer' : ' fica oculto')+' na tabela de preços.',
+  prExpOk:(n,i)=>'Tabela de preços ICMS '+i+'% exportada com '+n+' itens.',
+  prHint:'<b>Preço = custo ÷ (1 − ICMS − PIS/COFINS×(1−ICMS) − comissão − margem)</b>, a mesma conta da lista de '
+    +'preços Wendell: o PIS/COFINS incide só sobre o que sobra do ICMS. Cada ICMS (18, 12, 7 e 4%) é uma tabela '
+    +'com os próprios coeficientes — margem e comissão de cada coluna — e o <b>markup</b> (quantas vezes o custo '
+    +'vira preço) sai deles. O custo é o da fonte marcada em cada item na base <b>Atual</b> da Lista de preços '
+    +'(ou da base que ela adota); <b>Nova · simulação</b> mostra os preços com o rascunho, sem publicar. Só '
+    +'entram os itens com o <b>ícone de tabela</b> ligado — ele fica ao lado do código, aqui e na guia Custos. '
+    +'<b>Salvar</b> grava os coeficientes alterados, valendo para todos; o ponto ao lado do ICMS marca o que '
+    +'ainda não foi salvo.',
   none:'nenhum'
  },
  en:{
@@ -1351,6 +1436,32 @@ const T = {
   saveOk:'HTML generated with the current data. Upload it in place of index.html.',
   saveErr:'I can only rebuild the HTML when the page is served (GitHub Pages or any server) — opened straight from disk the browser blocks reading its own source.',
   pfilters:(f,d)=>'Filters: '+f+'  ·  Generated '+d,
+  cstGuiaPrecos:'Price list',
+  prIcms:'ICMS', prBase:'Cost', prAtual:'Current', prNova:'New · simulation',
+  prSimula:'simulating with the draft — nothing published',
+  prPis:'PIS/COFINS %', prMargem:'Margin %', prComissao:'Commission %', prMarkup:'Markup',
+  prVar:'Step to next table',
+  prTab:i=> i===4 ? 'Management' : 'Table '+(i+1),
+  prCodigo:'Code', prFonte:'Source', prCusto:'Cost',
+  prSemCusto:'NO COST', prInviavel:'unviable',
+  prSub:(n,tt,i)=>n+' of '+tt+' items on the list · ICMS '+i+'%',
+  prCnt:(n,oc)=>n+' on the list'+(oc ? ' · '+oc+' hidden' : ''),
+  prVerOc:n=>'Show hidden ('+n+')',
+  prVazio:'No visible item. The table icon next to each code (Costs and grouping tab) puts the item on the list.',
+  prSemBase:'The price-list cost basis is empty. Enter items in Price list · New and click Apply to the price list.',
+  prSalvo:l=>'Coefficients saved (ICMS '+l.join(', ')+'), for every user.',
+  prNadaSalvar:'No coefficient changes to save.',
+  prVisOn:'Shown on the price list — click to hide',
+  prVisOff:'Hidden from the price list — click to show',
+  prVisOk:(k,v)=>'"'+k+'"'+(v ? ' is back on' : ' is hidden from')+' the price list.',
+  prExpOk:(n,i)=>'Price list ICMS '+i+'% exported with '+n+' items.',
+  prHint:'<b>Price = cost ÷ (1 − ICMS − PIS/COFINS×(1−ICMS) − commission − margin)</b>, the same maths as the '
+    +'Wendell price list: PIS/COFINS only applies to what is left after ICMS. Each ICMS (18, 12, 7 and 4%) is a '
+    +'table with its own coefficients — margin and commission per column — and the <b>markup</b> (how many '
+    +'times cost becomes price) comes from them. Cost is the source ticked on each item in the price list '
+    +'<b>Current</b> basis (or the basis it adopts); <b>New · simulation</b> prices from the draft without '
+    +'publishing. Only items with the <b>table icon</b> on are listed — it sits next to the code, here and in the '
+    +'Costs tab. <b>Save</b> stores the changed coefficients for every user; the dot next to an ICMS marks unsaved changes.',
   none:'none'
  }
 };
@@ -1584,11 +1695,14 @@ function cstGuias(){
   const L = t();
   /* o markup e unico e global: nao pertence a nenhuma das quatro bases de
      custo, entao a barra de cenarios e o filtro de itens somem nessa guia */
-  const mk = CST_TAB === 'markup';
-  el('cstCen').hidden = mk; el('cstAcoes').hidden = mk;
+  const mk = CST_TAB === 'markup', pr = CST_TAB === 'precos';
+  /* a tabela de precos le a base da Lista de precos por conta propria: a barra
+     de cenarios nao se aplica a ela, mas o filtro de itens sim */
+  el('cstCen').hidden = mk || pr; el('cstAcoes').hidden = mk || pr;
   document.querySelector('.cst-fil').hidden = mk;
-  if (!mk) cstCenBar();
-  setH('cstGuias', [['custos', L.cstGuiaCustos], ['markup', L.cstGuiaMarkup]].map(x=>
+  if (!mk && !pr) cstCenBar();
+  setH('cstGuias', [['custos', L.cstGuiaCustos], ['markup', L.cstGuiaMarkup],
+                    ['precos', L.cstGuiaPrecos]].map(x=>
     '<button type="button" class="cst-guia" role="tab" data-t="'+x[0]+'" aria-selected="'
     + (CST_TAB===x[0]) + '">' + esc(x[1]) + '</button>').join(''));
 }
@@ -1602,7 +1716,9 @@ function cstGuias(){
 function cstRender(){
   cstGuias();
   cstBotoesTopo();
+  set('cstTitulo', CST_TAB === 'precos' ? t().cstGuiaPrecos : t().cstTitulo);
   if (CST_TAB === 'markup') return mkRender();
+  if (CST_TAB === 'precos') return prRender();
   /* cenario "Atual" e retrato do que esta valendo: nada e editavel nele */
   const RO = cenSoLeitura() ? ' disabled' : '', ROT = cenSoLeitura() ? ' readonly' : '';
   const L = t(), f = CUSTOS.fontes[CST_PAD] || '';
@@ -1740,7 +1856,7 @@ function cstRender(){
              : '<td><div class="skuw"><input data-i="'+i+'" data-k="sku" value="'+esc(o.sku)
                + '" spellcheck="false"' + ROT
                + ((ehRef || ehMembro) ? ' readonly title="'+esc(L.cstIdTravado)+'"' : '')
-               + '>' + selo + '</div></td>')
+               + '>' + selo + prVisBtn(o.sku) + '</div></td>')
           + CUSTOS.fontes.map(cel).join('')
           + (i < 0 || ehMembro
              ? '<td class="uso"><i>–</i></td>'
@@ -1925,9 +2041,11 @@ function cstBotoesTopo(){
   const mk = CST_TAB === 'markup';
   const ro = cenSoLeitura();
   /* no markup sempre da para salvar; Importar e Exportar sao de custos */
-  const b1 = el('cstSave'); if (b1) b1.hidden = mk ? false : ro;
-  const b2 = el('cstAdd');  if (b2) b2.hidden = mk ? false : ro;
-  const b3 = el('cstImp');  if (b3) b3.hidden = mk ? true  : ro;
+  const pr = CST_TAB === 'precos';
+  /* na tabela de precos: Salvar grava coeficientes, Exportar gera a tabela */
+  const b1 = el('cstSave'); if (b1) b1.hidden = (mk || pr) ? false : ro;
+  const b2 = el('cstAdd');  if (b2) b2.hidden = pr ? true : mk ? false : ro;
+  const b3 = el('cstImp');  if (b3) b3.hidden = (mk || pr) ? true : ro;
   const b4 = el('cstExp');  if (b4) b4.hidden = mk;
 }
 /* liga/desliga a adocao dos custos de Relatorios pela Lista de precos */
@@ -2024,6 +2142,9 @@ function cstPreview(){
 el('cstGuias').addEventListener('click', e=>{
   const b = e.target.closest('button'); if (!b) return;
   if (CST_TAB === b.dataset.t) return;
+  /* o que esta na tela vai para a base antes de trocar de guia: a tabela de
+     precos le das bases, entao precisa ver o que acabou de ser digitado */
+  if (CST_TAB === 'custos') cstGuarda();
   CST_TAB = b.dataset.t; GR_SEL = []; CST_ALERTA = false;
   CST_Q = ''; el('cstQ').value = '';
   cstRender();
@@ -2199,6 +2320,13 @@ async function cstSalvarCenario(cen){
 }
 el('cstSave').onclick = async () => {
   const L = t(), btn = el('cstSave');
+  if (CST_TAB === 'precos'){
+    btn.disabled = true;
+    try{ await prSalvar(); }
+    catch(err){ toast(t().impErr + (err && err.message ? err.message : err), true); }
+    finally { btn.disabled = false; }
+    return;
+  }
   if (CST_TAB === 'markup'){
     btn.disabled = true;
     try{ await mkSalvar(); }
@@ -2218,13 +2346,246 @@ el('cstSave').onclick = async () => {
   finally { btn.disabled = false; }
 };
 
+
+/* ============ guia Tabela de precos ============
+   Mesma conta da lista de precos Wendell:
+     preco = custo / (1 - icms - pis*(1-icms) - comissao - margem)
+   Uma tabela por ICMS (18/12/7/4), cada uma com os proprios coeficientes:
+   PIS/COFINS e, por coluna (Tabela 1..4 e Gerencia), margem e comissao. O
+   markup de cada coluna (1/divisor) e so informativo — sai dos coeficientes.
+   Os itens vem da base de custo da Lista de precos (precos_atual, ou a base
+   que ela adota); "Nova" simula com o rascunho. O custo de cada item e o da
+   fonte marcada nele, com o agrupamento valendo como na margem. Quem aparece
+   na tabela e decidido pelo icone de tabela ao lado do codigo. */
+const PR_ICMS = ['18','12','7','4'];
+const PR_NTAB = 5;
+const prCoefPadrao = () => ({pis:0.0925, margens:new Array(PR_NTAB).fill(0),
+                             comissoes:new Array(PR_NTAB).fill(0)});
+const PR = {icms:'18', base:'atual', verOc:false, coef:{}, ocultos:new Set(),
+            sujo:new Set(), salvos:{}};
+PR_ICMS.forEach(i=>{ PR.coef[i] = prCoefPadrao(); });
+PR.salvos = JSON.parse(JSON.stringify(PR.coef));
+function prCarrega(pd){
+  if (!pd) return;
+  const c = pd.coef || {};
+  PR_ICMS.forEach(i=>{
+    const x = c[i]; if (!x) return;
+    const arr = a => { const v = Array.isArray(a) ? a.map(y=>+y||0) : [];
+                       while (v.length < PR_NTAB) v.push(0); return v.slice(0, PR_NTAB); };
+    PR.coef[i] = {pis: x.pis == null ? 0.0925 : +x.pis, margens: arr(x.margens), comissoes: arr(x.comissoes)};
+  });
+  PR.salvos = JSON.parse(JSON.stringify(PR.coef));
+  PR.sujo = new Set();
+  PR.ocultos = new Set((pd.ocultos || []).map(normSku));
+}
+const prVisivel = sku => !PR.ocultos.has(normSku(sku));
+function prIcone(on){
+  return '<svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor">'
+    + '<rect x="1.6" y="2.6" width="12.8" height="10.8" rx="1.6" stroke-width="1.4"/>'
+    + '<path d="M1.6 6.2h12.8M1.6 9.8h12.8M6.2 6.2v7.2" stroke-width="1.2"/>'
+    + (on ? '' : '<path d="M2.2 14.6 13.8 1.4" stroke-width="1.7"/>') + '</svg>';
+}
+function prVisBtn(sku){
+  if (!String(sku == null ? '' : sku).trim()) return '';
+  const on = prVisivel(sku), L = t();
+  return '<button type="button" class="pv'+(on ? '' : ' off')+'" data-pv="'+esc(sku)+'"'
+    + ' aria-pressed="'+on+'" title="'+esc(on ? L.prVisOn : L.prVisOff)+'"'
+    + ' aria-label="'+esc(on ? L.prVisOn : L.prVisOff)+'">'+prIcone(on)+'</button>';
+}
+async function prToggleVis(sku, btn){
+  const k = normSku(sku); if (!k) return;
+  const vai = PR.ocultos.has(k);                  /* estava oculto -> vai aparecer */
+  if (vai) PR.ocultos.delete(k); else PR.ocultos.add(k);
+  const pinta = () => el('cstGrid').querySelectorAll('button.pv').forEach(b=>{
+    if (normSku(b.dataset.pv) === k) b.outerHTML = prVisBtn(b.dataset.pv);
+  });
+  if (CST_TAB === 'precos') prRender(); else pinta();
+  if (!SB_ON){ toast(t().prVisOk(sku, vai)); return; }
+  try{
+    await sbRpc('fio_precos_visivel', {p_sku: sku, p_visivel: vai});
+    toast(t().prVisOk(sku, vai));
+  } catch(err){
+    if (vai) PR.ocultos.add(k); else PR.ocultos.delete(k);   /* desfaz na tela */
+    if (CST_TAB === 'precos') prRender(); else pinta();
+    toast(t().impErr + (err && err.message ? err.message : err), true);
+  }
+}
+/* base de custo que a tabela de precos le agora */
+function prBaseObj(){
+  const c = PR.base === 'nova' ? 'precos_nova' : 'precos_atual';
+  return CST_BASES[cenFonte(c)] || cenVazio();
+}
+function prDivisor(c, i){
+  const icms = (+PR.icms || 0) / 100, pis = +c.pis || 0;
+  return 1 - icms - pis * (1 - icms) - (+c.comissoes[i] || 0) - (+c.margens[i] || 0);
+}
+/* linhas da tabela: item, fonte marcada e custo efetivo (grupo incluso) */
+function prLinhas(){
+  const b = prBaseObj(), itens = b.itens || {}, grupos = b.grupos || {};
+  const refDe = {};
+  Object.keys(grupos).forEach(r=>{
+    (grupos[r] || []).forEach(m=>{ if (m !== r) refDe[normSku(m)] = r; });
+  });
+  const pad = FONTES.indexOf(b.padrao) >= 0 ? b.padrao : FONTES[0];
+  return Object.keys(itens).sort((a,c)=>a.localeCompare(c, undefined, {numeric:true})).map(k=>{
+    const r0 = refDe[normSku(k)], ref = (r0 && itens[r0]) ? r0 : k;
+    const f = FONTES.indexOf((b.fixos || {})[ref]) >= 0 ? b.fixos[ref] : pad;
+    const e = custosDoGrupo(ref, itens, grupos);
+    return {sku:k, fonte:f, custo: cst4(e.v[FONTES.indexOf(f)]), ref: ref !== k ? ref : ''};
+  });
+}
+const nf2 = v => new Intl.NumberFormat(loc(),{minimumFractionDigits:2,maximumFractionDigits:2}).format(v);
+function prPrecoCel(l, c, i){
+  if (!l.custo) return '';
+  const d = prDivisor(c, i);
+  return d > 0.0001 ? nf2(l.custo / d) : '–';
+}
+function prCorpo(linhas, c){
+  const L = t();
+  if (!linhas.length) return '<tr><td class="empty" colspan="'+(PR_NTAB+4)+'" style="padding:16px;'
+    + 'color:var(--ink-3);text-align:center">' + esc(prBaseObj().itens && Object.keys(prBaseObj().itens).length
+      ? L.prVazio : L.prSemBase) + '</td></tr>';
+  return linhas.map(l=>{
+    const on = prVisivel(l.sku);
+    return '<tr'+(on ? '' : ' class="pr-oc"')+'><td class="vis">'+prVisBtn(l.sku)+'</td>'
+      + '<td class="cod"'+(l.ref ? ' title="'+esc(L.cstFonteDoGrupo(l.ref))+'"' : '')+'>'+esc(l.sku)
+      + (l.ref ? ' <span style="color:var(--ink-3);font-weight:400">→ '+esc(l.ref)+'</span>' : '')+'</td>'
+      + '<td class="fnt">'+esc(l.fonte)+'</td>'
+      + '<td class="cus">'+(l.custo ? nf4(l.custo) : '–')+'</td>'
+      + (l.custo
+          ? c.margens.map((m,i)=>'<td class="pcol" data-pp="'+i+'"><b>'+prPrecoCel(l, c, i)+'</b></td>').join('')
+          : '<td class="sc" colspan="'+PR_NTAB+'">'+esc(L.prSemCusto)+'</td>')
+      + '</tr>';
+  }).join('');
+}
+function prFiltradas(){
+  const q = normSku(CST_Q), todas = prLinhas();
+  const vis = todas.filter(l=>(!q || normSku(l.sku).indexOf(q) >= 0 || normSku(l.ref).indexOf(q) >= 0)
+                              && (PR.verOc || prVisivel(l.sku)));
+  return {todas, vis};
+}
+function prRender(){
+  const L = t(), c = PR.coef[PR.icms];
+  const bA = el('cstAlerta'); if (bA) bA.hidden = true;
+  const {todas, vis} = prFiltradas();
+  const nOn = todas.filter(l=>prVisivel(l.sku)).length, nOc = todas.length - nOn;
+  set('cstSub', L.prSub(nOn, todas.length, PR.icms));
+  set('cstCnt', L.prCnt(vis.filter(l=>prVisivel(l.sku)).length, nOc));
+  const seg = (lb, itens) => '<div class="pr-seg" role="group"><span class="lb">'+esc(lb)+'</span>'
+    + itens.join('') + '</div>';
+  const barra = '<div class="pr-bar">'
+    + seg(L.prIcms, PR_ICMS.map(i=>'<button type="button" data-pri="'+i+'" aria-pressed="'+(PR.icms===i)+'">'
+        + i + '%' + (PR.sujo.has(i) ? '<span class="dot" title="'+esc(L.cstSujo)+'"></span>' : '') + '</button>'))
+    + seg(L.prBase, [['atual', L.prAtual], ['nova', L.prNova]].map(x=>
+        '<button type="button" data-prb="'+x[0]+'" aria-pressed="'+(PR.base===x[0])+'">'+esc(x[1])+'</button>'))
+    + '<label class="pr-pis">'+esc(L.prPis)
+    + '<input class="num" data-prc="pis" inputmode="decimal" value="'+esc(mkTxt(c.pis))+'" placeholder="0"></label>'
+    + (PR.base === 'nova' ? '<span class="sim">'+esc(L.prSimula)+'</span>' : '')
+    + '<button type="button" class="oc" id="prOcBt" aria-pressed="'+PR.verOc+'"'+(nOc ? '' : ' hidden')+'>'
+    + esc(L.prVerOc(nOc)) + '</button></div>';
+  const cab = c.margens.map((m,i)=>'<th class="pcol">'+esc(L.prTab(i))+'</th>').join('');
+  const inp = (k,i,v) => '<td><input class="num" data-prc="'+k+'" data-pi="'+i+'" inputmode="decimal"'
+    + ' value="'+esc(mkTxt(v))+'" placeholder="0"></td>';
+  const coef = '<table class="cst pr-coef"><thead><tr><th class="rh">ICMS '+esc(PR.icms)+'%</th>'
+    + c.margens.map((m,i)=>'<th>'+esc(L.prTab(i))+'</th>').join('') + '</tr></thead><tbody>'
+    + '<tr><td class="rh">'+esc(L.prMargem)+'</td>'+c.margens.map((v,i)=>inp('m',i,v)).join('')+'</tr>'
+    + '<tr><td class="rh">'+esc(L.prComissao)+'</td>'+c.comissoes.map((v,i)=>inp('c',i,v)).join('')+'</tr>'
+    + '<tr class="mkp"><td class="rh">'+esc(L.prMarkup)+'</td>'
+    + c.margens.map((m,i)=>'<td class="ro" data-pmk="'+i+'"></td>').join('')+'</tr>'
+    + '<tr><td class="rh">'+esc(L.prVar)+'</td>'
+    + c.margens.map((m,i)=>'<td class="ro" data-pvr="'+i+'"></td>').join('')+'</tr>'
+    + '</tbody></table>';
+  setH('cstGrid', barra + coef
+    + '<table class="cst pr-tab"><thead><tr><th class="vis"></th><th>'+esc(L.prCodigo)+'</th>'
+    + '<th>'+esc(L.prFonte)+'</th><th class="num">'+esc(L.prCusto)+'</th>' + cab + '</tr></thead>'
+    + '<tbody id="prCorpo">' + prCorpo(vis, c) + '</tbody></table>');
+  prCoefCalc();
+  setH('cstHint', L.prHint);
+}
+/* markup e variacao entre tabelas: so as celulas, sem redesenhar os campos */
+function prCoefCalc(){
+  const L = t(), c = PR.coef[PR.icms];
+  const d = c.margens.map((m,i)=>prDivisor(c, i));
+  d.forEach((x,i)=>{
+    const mk = el('cstGrid').querySelector('[data-pmk="'+i+'"]');
+    if (mk) mk.innerHTML = x > 0.0001 ? nf4(1 / x) : '<i>'+esc(L.prInviavel)+'</i>';
+    const vr = el('cstGrid').querySelector('[data-pvr="'+i+'"]');
+    if (vr){
+      const ok = i < d.length - 1 && x > 0.0001 && d[i+1] > 0.0001;
+      vr.textContent = ok ? nf2((d[i+1] / x - 1) * 100) + '%' : '–';
+    }
+  });
+}
+function prRecalc(){
+  prCoefCalc();
+  const corpo = el('prCorpo');
+  if (corpo) corpo.innerHTML = prCorpo(prFiltradas().vis, PR.coef[PR.icms]);
+  /* ponto de "nao salvo" no botao do ICMS aberto */
+  const b = el('cstGrid').querySelector('[data-pri="'+PR.icms+'"]');
+  if (b){
+    const tem = !!b.querySelector('.dot');
+    if (PR.sujo.has(PR.icms) && !tem) b.insertAdjacentHTML('beforeend', '<span class="dot"></span>');
+    if (!PR.sujo.has(PR.icms) && tem) b.querySelector('.dot').remove();
+  }
+}
+el('cstGrid').addEventListener('input', e=>{
+  const n = e.target; if (!n.dataset || n.dataset.prc === undefined) return;
+  const c = PR.coef[PR.icms], k = n.dataset.prc;
+  if (k === 'pis') c.pis = mkPct(n.value);
+  else if (k === 'm') c.margens[+n.dataset.pi] = mkPct(n.value);
+  else if (k === 'c') c.comissoes[+n.dataset.pi] = mkPct(n.value);
+  if (JSON.stringify(c) === JSON.stringify(PR.salvos[PR.icms])) PR.sujo.delete(PR.icms);
+  else PR.sujo.add(PR.icms);
+  prRecalc();
+});
+el('cstGrid').addEventListener('click', e=>{
+  const pv = e.target.closest('button.pv');
+  if (pv){ prToggleVis(pv.dataset.pv, pv); return; }
+  const b = e.target.closest('button'); if (!b) return;
+  if (b.dataset.pri){ PR.icms = b.dataset.pri; prRender(); }
+  else if (b.dataset.prb){ if (PR.base !== b.dataset.prb){ if (PR.base === 'atual') cstGuarda(); PR.base = b.dataset.prb; prRender(); } }
+  else if (b.id === 'prOcBt'){ PR.verOc = !PR.verOc; prRender(); }
+});
+async function prSalvar(){
+  const L = t(), lista = PR_ICMS.filter(i=>PR.sujo.has(i));
+  if (!lista.length){ toast(L.prNadaSalvar); return; }
+  if (!SB_ON){ toast(L.custoLocal); return; }
+  for (const i of lista){
+    const c = PR.coef[i];
+    await sbRpc('fio_precos_coef_salvar', {p_icms: i, p_pis: c.pis,
+      p_margens: c.margens, p_comissoes: c.comissoes});
+    PR.salvos[i] = JSON.parse(JSON.stringify(c));
+    PR.sujo.delete(i);
+  }
+  prRender();
+  toast(L.prSalvo(lista.map(i=>i+'%')));
+}
+function prExportar(){
+  const L = t(), c = PR.coef[PR.icms];
+  const linhas = prFiltradas().vis.filter(l=>prVisivel(l.sku));
+  const cab = [L.prCodigo, L.prFonte, L.prCusto].concat(c.margens.map((m,i)=>L.prTab(i)))
+    .map(v=>({v: String(v).toUpperCase(), s:1}));
+  const corpo = linhas.map(l=>[l.sku, l.fonte, l.custo || ''].concat(c.margens.map((m,i)=>{
+    const d = prDivisor(c, i);
+    return l.custo && d > 0.0001 ? Math.round(l.custo / d * 100) / 100 : '';
+  })));
+  const url = URL.createObjectURL(new Blob([custosXlsx([cab].concat(corpo),
+      [22, 11, 12].concat(c.margens.map(()=>14)), 'ICMS '+PR.icms)],
+    {type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'}));
+  const a = document.createElement('a');
+  a.href = url; a.download = 'PRECOS-FIORELLA-ICMS'+PR.icms+(PR.base === 'nova' ? '-SIMULACAO' : '')+'.xlsx';
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(()=>URL.revokeObjectURL(url), 4000);
+  toast(L.prExpOk(linhas.length, PR.icms));
+}
+
 /* ============ exportar / importar a tabela de custos ============
    Uma planilha, aba TABELA: uma linha por item e uma COLUNA POR FONTE de
    custo (COGS1, COGS2, LANDED1, LANDED2). A planilha carrega so os VALORES —
    a escolha de fonte de cada item vive na tela e no banco, nao na planilha.
    E o mesmo formato que a importacao le, entao exportar, editar no Excel e
    importar de volta fecha o ciclo sem mexer nas escolhas. */
-function custosXlsx(){
+function custosXlsx(linhasIn, largIn, abaIn){
   const estilos = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
    + '<styleSheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">'
    + '<fonts count="2"><font><sz val="10"/><name val="Arial"/></font>'
@@ -2240,9 +2601,9 @@ function custosXlsx(){
    + ' applyAlignment="1"><alignment horizontal="center" vertical="center"/></xf></cellXfs>'
    + '<cellStyles count="1"><cellStyle name="Normal" xfId="0" builtinId="0"/></cellStyles></styleSheet>';
   const cab = ['ID LIMPO'].concat(CUSTOS.fontes).map(v=>({v, s:1}));
-  const linhas = [cab].concat((CST_EDIT || []).filter(o=>o.sku)
+  const linhas = linhasIn || [cab].concat((CST_EDIT || []).filter(o=>o.sku)
     .map(o=>[o.sku].concat(o.v.map(x=>+x||0))));
-  const larg = [20].concat(CUSTOS.fontes.map(()=>14));
+  const larg = largIn || [20].concat(CUSTOS.fontes.map(()=>14));
   return zipStore([
    {name:'[Content_Types].xml', xml:'<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
      + '<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">'
@@ -2259,7 +2620,7 @@ function custosXlsx(){
    {name:'xl/workbook.xml', xml:'<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
      + '<workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" '
      + 'xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">'
-     + '<sheets><sheet name="TABELA" sheetId="1" r:id="rId1"/></sheets></workbook>'},
+     + '<sheets><sheet name="'+xe(abaIn || 'TABELA')+'" sheetId="1" r:id="rId1"/></sheets></workbook>'},
    {name:'xl/_rels/workbook.xml.rels', xml:'<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
      + '<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">'
      + '<Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet1.xml"/>'
@@ -2270,6 +2631,7 @@ function custosXlsx(){
   ]);
 }
 el('cstExp').onclick = () => {
+  if (CST_TAB === 'precos') return prExportar();
   const url = URL.createObjectURL(new Blob([custosXlsx()],
     {type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'}));
   const a = document.createElement('a');
@@ -2563,6 +2925,11 @@ async function sbLoadData(){
     if (CST_TAB === 'markup' && !el('cstModal').hidden) mkRender();
   }).catch(()=>{});
   /* preferencia global (quem adota a base de quem): mora no banco */
+  sbRpc('fio_precos_dados', {}).then(pd=>{
+    prCarrega(pd);
+    const m = el('cstModal');
+    if (m && !m.hidden) cstRender();
+  }).catch(()=>{});
   sbRpc('fio_custos_prefs_ler', {}).then(pf=>{
     const v = pf && pf.espelho_custos;
     ESPELHO = (v === 'precos' || v === 'relatorio') ? v : '';
